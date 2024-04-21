@@ -8,6 +8,7 @@ from textnode import (
     text_type_code,
     text_type_image,
     text_type_link,
+    text_node_to_html_node
 )
 
 
@@ -39,6 +40,15 @@ class TestTextNode(unittest.TestCase):
         self.assertEqual(
             "TextNode(This is a text node, text, https://www.boot.dev)", repr(node)
         )
+
+    def test_text_node_to_html_node(self):
+        node = TextNode("Hello World!", text_type_link, "https://www.google.com")
+        self.assertEqual(str(text_node_to_html_node(node)), "LeafNode(a, Hello World!, {'href': 'https://www.google.com'})")
+
+    def test_text_node_to_html_node2(self):
+        node = TextNode("Hello World!", text_type_text)
+        print(node)
+        self.assertEqual(str(text_node_to_html_node(node)), "LeafNode(None, Hello World!, None)")
 
 
 if __name__ == "__main__":
