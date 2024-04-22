@@ -35,6 +35,6 @@ if __name__ == "__main__":
         "--dir", type=str, help="Directory to serve files from", default="."
     )
     parser.add_argument("--port", type=int, help="Port to serve HTTP on", default=8888)
-    rgs = parser.parse_args()
+    args = parser.parse_args()
 
     run(port=args.port, directory=args.dir)
